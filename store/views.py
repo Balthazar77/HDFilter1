@@ -29,6 +29,6 @@ class ProductByCategory(ListView):
     slug_field = 'url'
 
     def get_queryset(self,**kwargs):
-        #queryset = Product.objects.filter(slug='slug')
+        ##queryset = Product.objects.filter(slug='slug')
         queryset = Product.objects.filter(slug=F('slug'))
         return queryset
