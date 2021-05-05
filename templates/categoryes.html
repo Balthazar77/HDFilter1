@@ -1,0 +1,9 @@
+
+
+{% block cats %}
+<div class="list-group">
+{% for cats in category %}
+    <a href="/product/{{ cats.slug }}" class="list-group-item">{{ cats.name }}</a>
+{% endfor %}
+</div>
+{% endblock cats %}

@@ -1,0 +1,17 @@
+
+{% block product_detail %}
+        <h3>{{ product.title }}</h3>
+        <p>Цена: {{ product.price }} руб.</p>
+        <p>{{ product.image }}</p>
+        <p>Описание:{{ product.description }}</p>
+        <p>Аналог:{{ product.analog }}</p>
+        <p>Применение: {{ product.applicability }}</p>
+        <p>Вес: {{ product.filter_weight }}</p>
+        <p>Объем: {{ product.filter_volume }}</p>
+        <p>Размеры: {{ product.filter_size }}</p>
+        <p>В наличие: {{ product.in_stock }}</p>
+        <p>Количество: {{ product.filter_count }}</p>
+{% endblock product_detail %}
+    {% block cats %}
+        {% include 'category.html' %}
+    {% endblock cats%}

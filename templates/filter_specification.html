@@ -1,0 +1,31 @@
+{% block filter_specifications %}
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Производитель</td>
+      <td>{{ product.brand }}</td>
+    </tr>
+    <tr>
+      <td>Применение</td>
+      <td>{{ product.applicability }}</td>
+    </tr>
+    <tr>
+      <td>Аналоги</td>
+      <td>{{ product.analog }}</td>
+    </tr>
+      <tr>
+      <td>Вес</td>
+      <td>{{ product.filter_weight }}</td>
+    </tr>
+      <tr>
+      <td>Объем</td>
+      <td>{{ product.filter_volume }}</td>
+    </tr>
+      <tr>
+      <td>Размер</td>
+      <td>{{ product.filter_size }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock filter_specifications %}
+
