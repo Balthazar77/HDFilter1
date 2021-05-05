@@ -22,7 +22,6 @@ class AdminBrand(admin.ModelAdmin):
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
     list_display= ('id','title','articul','category','brand')
-    prepopulated_fields = {'slug': ('title',)}
     list_display_links = ('title',)
 
 #admin.site.register(Category)

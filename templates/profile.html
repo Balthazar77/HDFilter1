@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-sm-4 col-md-8">
+        <div class="card" style="padding:5px">
+            <div class="card-body">
+                <h4 class="card-title">Р’Р°С€ РїСЂРѕС„РёР»СЊ</h4>
+                <div class="form-group" align="center" style="margin:5px">
+                    <img src="{{ user.image_url }}" alt="test"
+                         class="img-fluid img-rounded" width="200px"
+                         style="margin:10px">
+                </div>
+                <!--<div class="form-group" style="margin:5px>-->
+                <!--<label for=" {{ form.email.auto_id }}-->
+                <!--" class="col-form-label">{{ form.email.label }} </label>-->
+                <!--<input disabled type="email" name="{{ form.email.name }}"-->
+                       <!--placeholder="E-mail" value="{{ form.email.value }}"-->
+                       <!--class="form-control customclearablefileinput"-->
+                       <!--id="{{ form.email.auto_id }}">-->
+            <!--</div>-->
+            <div class="form-group" style="margin:5px>
+                <label for=" {{ form.first_name.auto_id }}
+            " class="col-form-label">{{ form.first_name.label }} </label>
+            <input disabled type="text" name="{{ form.first_name.name }}"
+                   placeholder="{{ form.first_name.label }}"
+                   value="{{ form.first_name.value }}"
+                   class="form-control customclearablefileinput"
+                   id="{{ form.first_name.auto_id }}">
+        </div>
+        <div class="form-group" style="margin:5px>
+                <label for=" {{ form.last_name.auto_id }}
+        " class="col-form-label">{{ form.last_name.label }} </label>
+        <input disabled type="text" name="{{ form.last_name.name }}"
+               placeholder="{{ form.last_name.label }}"
+               value="{{ form.last_name.value }}"
+               class="form-control customclearablefileinput"
+               id="{{ form.last_name.auto_id }}">
+    </div>
+    <div class="form-group" role="group" aria-label="Buttons" align="center">
+        <a href="{% url 'profile_edit' %}" class="btn btn-secondary btn-block">РР·РјРµРЅРёС‚СЊ
+            РїСЂРѕС„РёР»СЊ</a>
+    </div>
+</div>
+
+<div class="container">
+    <h4>
+        РњРѕРё РЅР°С‡Р°С‚С‹Рµ РєСѓСЂСЃС‹
+    </h4>
+    {% for enroll in Enrollments %}
+    <div class="row">
+        <div class="col-md-8 col-xs-8 col-sm-8">
+            <label class="col-form-label"><b>{{ enroll.course }}</b></label>
+        </div>
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <a href="{% url 'course_detail'  pk=enroll.course.pk %}"
+               class="btn btn-primary btn-block">РџРµСЂРµР№С‚Рё</a>
+        </div>
+    </div>
+    {% empty %}
+    <h4>РќРё РѕРґРЅРѕРіРѕ РєСѓСЂСЃР° РЅРµС‚</h4>
+    {% endfor %}
+</div>
+
+{% endblock %}

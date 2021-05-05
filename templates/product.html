@@ -1,38 +1,18 @@
-{% extends 'base.html' %}
 {% block product %}
-  <style type="text/css">
-   TABLE {
-    width: 300px; /* Ширина таблицы */
-    background: #fffff0; /* Цвет фона нечетных строк */
-    border: 1px solid #a52a2a; /* Рамка вокруг таблицы */
-    border-collapse: collapse; /* Убираем двойные линии между ячейками */
-   }
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого ячейки */
-   }
-   TD {
-    text-align: center; /* Выравнивание по центру */
-    border-bottom: 1px solid #a52a2a; /* Линия внизу ячейки */
-   }
-   TH {
-    background: #a52a2a; /* Цвет фона */
-    color: white; /* Цвет текста */
-   }
-   TR.even {
-    background: #fff8dc; /* Цвет фона четных строк */
-   }
-   .la {
-    text-align: left; /* Выравнивание по левому краю */
-   }
-  </style>
-  <table>
-   <tr>
-    <th>&nbsp;</th><th>Наименования</th><th>Артикул</th><th>Описание</th><th>Картинка</th><th>В наличие</th><th>Количество</th>
-   </tr>
- {% for products in product %}
-   <tr class="even">
-    <td class="la">{{ products.brand }}</td><td>{{ products.title }}</td><td>{{ products.articul }}</td><td>{{ products.description }}</td><td><img src="{{ products.image.url }}"></td><td>{{ products.in_stock }}</td><td>{{ products.filter_count }}</td>
-   </tr>
- {% endfor %}
-  </table>
+    {% for products in product %}
+<div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="{% url 'product' %}{{ products.category.slug }}/{{ products.articul }}"><img class="card-img-top" src="{{ products.image.url }}" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{% url 'product' %}{{ products.category.slug }}/{{ products.articul }}">{{ products.title }}</a>
+                </h4>
+                <h5>{{ products.price }} руб.</h5>
+                <p class="card-text">Test</p>
+              </div>
+            </div>
+          </div>
+
+</div>
+    {% endfor %}
 {% endblock product %}

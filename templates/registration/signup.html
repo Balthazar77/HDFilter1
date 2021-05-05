@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7" style="padding: 50px">
+    <div class="card" style="padding:10px">
+        <div class="card-body">
+        <h4 class="card-title">Регистрация</h4>
+             <form  method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                   <div class="form-group">
+                       {{ field.label_tag }}
+                      {{ field }}
+                    {% if field.help_text %}
+                     <small id="{{ field.name }}lHelp" class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                      <p>{{ error }}</p>
+                    {% endfor %}
+                   </div>
+                {% endfor %}
+                 <div class="form-group row">
+                     <div class="offset-sm-4 col-sm-10">
+                         <button type="submit" class="btn btn-primary justify-content-center" align="center">Зарегистрироваться</button>
+                     </div>
+                 </div>
+
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

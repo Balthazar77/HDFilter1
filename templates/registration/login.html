@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row justify-content-center" style="padding: 50px">
+    <div class="col-sm-7 col-md-9">
+        <div class="card" style="padding:5px">
+        <div class="card-body">
+        <h4 class="card-title">Личный кабинет</h4>
+        <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+         {{ form|crispy }}
+            <div class="justify-content-center  al-center">
+                <div class="btn-group" role="group" aria-label="Basic example" style="padding-top:5px">
+                    <a href="{% url 'signup' %}" class="btn btn-secondary">Регистрация</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example" style="padding-top:5px">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example" style="padding-top:5px">
+                    <a href="{% url 'password_reset' %}" class="btn btn-secondary">Забыли пароль</a>
+                </div>
+            </div>
+        </form>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
