@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=20, blank=False, verbose_name='Имя')
     last_name = models.CharField(max_length=30, blank=False, verbose_name='Фамилия')
     email = models.EmailField(max_length=255, unique=True, blank=False, verbose_name='Электронная почта')
-    telephone = models.CharField(max_length=30, verbose_name='Телефон')
+    telephone = models.CharField(max_length=30, verbose_name='Телефон', blank=True)
     is_staff = models.BooleanField(default=False, verbose_name='Доступ к админке')
     is_activ = models.BooleanField(default=True, verbose_name='Активная учетная запись')
     last_login = models.DateTimeField('date joined', default=timezone.now)
@@ -93,7 +93,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class DataUserOrganization(models.Model):
 
-    account = models.ForeignKey(User, on_delete=models.CASCADE)
+    account = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Аккаунт', on_delete=models.CASCADE)
     name_org = models.CharField(max_length=150, verbose_name='Наименнование органицазии')
     name_director = models.CharField(max_length=191, verbose_name='Генеральный директор')
     ur_address = models.CharField(max_length=191, verbose_name='Юридический адрес')
@@ -106,7 +106,8 @@ class DataUserOrganization(models.Model):
     k_chet = models.CharField(max_length=10, verbose_name='Корр.счет')
 
     def __str__(self):
-        return self.name
+        user_name = self.user.get_full_name()
+        return f'ХЗ: "{user_name}" "{self.DataUserOrganization.name_org}"'
 
     class Meta:
         verbose_name = 'Реквизиты'
@@ -133,13 +134,8 @@ class Enrollment(models.Model):
 
     role = models.IntegerField(choices=_ROLE_CHOICES, default=CLIENT)
 
-    class Meta:
-        verbose_name = 'Данные организации'
-        verbose_name_plural = 'Данные организации'
 
-    def __str__(self):
-        user_name = self.user.get_full_name()
-        return f'ХЗ: "{user_name}" "{self.DataUserOrganization.name_org}"'
+
 
     @property
     def human_role(self):
