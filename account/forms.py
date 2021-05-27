@@ -155,7 +155,139 @@ class ProfileForm(forms.ModelForm):
         help_text='',
         widget=forms.TextInput(
             attrs={
-                'placeholder': 'Телефон',
+                'placeholder': 'Генеральный директор',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    ur_address = forms.CharField(max_length=50,
+        label='Юридический адрес',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Юридический адрес',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    fk_address = forms.CharField(max_length=50,
+        label='Фактический адрес',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Фактический адрес',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    inn = forms.CharField(max_length=50,
+        label='ИНН',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'ИНН',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    kpp = forms.CharField(max_length=50,
+        label='КПП',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'КПП',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    ogrn = forms.CharField(max_length=50,
+        label='ОГРН',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'ОГРН',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    okpo = forms.CharField(max_length=50,
+        label='ОКПО',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'ОКПО',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    okvid = forms.CharField(max_length=50,
+        label='ОКВЭД',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'ОКВЭД',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    name_bank = forms.CharField(max_length=50,
+        label='Название банка',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Название банка',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    bic = forms.CharField(max_length=50,
+        label='БИК',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'БИК',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    r_chet = forms.CharField(max_length=50,
+        label='Р/счет',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Р/счет',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    k_chet = forms.CharField(max_length=50,
+        label='Корр.счет',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Корр.счет',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    post_address = forms.CharField(max_length=50,
+        label='Почтовый адрес',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Почтовый адрес',
                 'class': 'form-control',
                 'type': 'text',
             }

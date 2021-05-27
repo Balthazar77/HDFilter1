@@ -64,6 +64,18 @@ class Profile(View):
             'telephone': user.telephone,
             'name_org': organizations.name_org,
             'name_director': organizations.name_director,
+            'ur_address': organizations.ur_address,
+            'fk_address': organizations.fk_address,
+            'inn': organizations.inn,
+            'ogrn': organizations.ogrn,
+            'kpp': organizations.kpp,
+            'okpo': organizations.okpo,
+            'okvid': organizations.okvid,
+            'name_bank': organizations.name_bank,
+            'bic': organizations.bic,
+            'r_chet': organizations.r_chet,
+            'k_chet': organizations.k_chet,
+            'post_address': organizations.post_address,
         }
         form = self.form_class(initial=initials)
         return self.render_form(form)

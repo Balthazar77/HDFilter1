@@ -23,7 +23,7 @@ from store.views import ProductListView, ProductByCategory
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^product/', include('store.urls')),
-    url(r'^account/', include('account.urls')),
+    url(r'^accounts/', include('account.urls')),
 ]
 
 if settings.DEBUG is True:
