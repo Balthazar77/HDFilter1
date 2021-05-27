@@ -4,6 +4,7 @@ from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.utils import timezone
 from django.db import models
+import requests
 
 
 class UserManager(BaseUserManager):
@@ -93,21 +94,28 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class DataUserOrganization(models.Model):
 
-    account = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Аккаунт', on_delete=models.CASCADE)
-    name_org = models.CharField(max_length=150, verbose_name='Наименнование органицазии')
-    name_director = models.CharField(max_length=191, verbose_name='Генеральный директор')
-    ur_address = models.CharField(max_length=191, verbose_name='Юридический адрес')
-    fk_address = models.CharField(max_length=191, verbose_name='Фактический адрес')
-    ogrn = models.CharField(max_length=13, verbose_name='ОГРН')
-    inn = models.CharField(max_length=10, verbose_name='ИНН')
-    kpp = models.CharField(max_length=9, verbose_name='КПП')
-    okpo = models.CharField(max_length=10, verbose_name="ОКПО")
-    r_chet = models.CharField(max_length=10, verbose_name='Р/счет')
-    k_chet = models.CharField(max_length=10, verbose_name='Корр.счет')
+    account = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, verbose_name='Аккаунт',  on_delete=models.CASCADE)
+    name_org = models.CharField(max_length=170, verbose_name='Наименнование организации')
+    name_director = models.CharField(max_length=170, verbose_name='Генеральный директор')
+    ur_address = models.CharField(max_length=170, verbose_name='Юридический адрес', blank=True)
+    fk_address = models.CharField(max_length=170, verbose_name='Фактический адрес', blank=True)
+    inn = models.CharField(max_length=170, verbose_name='ИНН')
+    ogrn = models.CharField(max_length=170, verbose_name='ОГРН', blank=True)
+    kpp = models.CharField(max_length=170, verbose_name='КПП', blank=True)
+    okpo = models.CharField(max_length=170, verbose_name="ОКПО", blank=True)
+    okvid = models.CharField(max_length=170, verbose_name="ОКВЭД", blank=True)
+    name_bank = models.CharField(max_length=170, verbose_name="Название банка", blank=True)
+    bic = models.CharField(max_length=100, verbose_name="БИК", blank=True)
+    r_chet = models.CharField(max_length=170, verbose_name='Р/счет', blank=True)
+    k_chet = models.CharField(max_length=170, verbose_name='Корр.счет', blank=True)
+    post_address = models.CharField(max_length=170, verbose_name="Почтовый адрес", blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
-        user_name = self.user.get_full_name()
-        return f'ХЗ: "{user_name}" "{self.DataUserOrganization.name_org}"'
+        return self.name_org
 
     class Meta:
         verbose_name = 'Реквизиты'
@@ -142,5 +150,13 @@ class Enrollment(models.Model):
         return self._ROLES_TRANSLATION[self.role]
 
     # PermissionsMixin
+    def has_module_perms(self, app_label):
+        # TODO: проверять, есть ли у пользователя права на вьюху
+        print(f'has_module_perms - app_label: {app_label}')
+        return self.is_superuser or self.is_manager
 
+    def has_perm(self, perm, obj=None):
+        # TODO: проверять, есть ли у пользователя права на конкретный объект
+        print(f'has_perm - perm: {perm} obj: {obj}')
+        return self.is_superuser or self.is_manager
 

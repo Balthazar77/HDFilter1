@@ -116,10 +116,53 @@ class ProfileForm(forms.ModelForm):
                 'type': 'text',
             }
         ))
-
+    email = forms.CharField(max_length=50,
+        label='Электронная почта',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Электронная почта',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    telephone = forms.CharField(max_length=50,
+        label='Телефон',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Телефон',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    name_org = forms.CharField(max_length=50,
+        label='Наименнование организации',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Наименнование организации',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
+    name_director = forms.CharField(max_length=50,
+        label='Генеральный директор',
+        required=False,
+        help_text='',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Телефон',
+                'class': 'form-control',
+                'type': 'text',
+            }
+        ))
     class Meta:
         model = User
-        fields = ('first_name', 'last_name')#'email',
+        fields = ('first_name', 'last_name', 'email', 'telephone','name_org','name_director')#'email',
 
     def clean(self):
         cleaned_data = super().clean()

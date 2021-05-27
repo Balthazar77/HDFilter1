@@ -1,0 +1,322 @@
+{% extends "admin/base_site.html" %}
+{{ }}
+{% block content %}
+    <div id="content-main">
+
+
+  <ul class="object-tools">
+
+
+
+<li>
+
+    <a href="/admin/account/datauserorganization/1/history/" class="historylink">История</a>
+</li>
+
+
+
+
+  </ul>
+
+
+<form method="post" id="datauserorganization_form" novalidate=""><input type="hidden" name="csrfmiddlewaretoken" value="I29DuZzfHYtYHrZEIvj4iu4IYLWvEOJsjjkGkwVMJoN3AsmwPGt6KEc5z0DvZ8nh">
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+
+
+
+        <div class="form-row field-account">
+
+
+                <div>
+
+
+                        <label class="required" for="id_account">Аккаунт:</label>
+
+                            <div class="related-widget-wrapper">
+    <select name="account" required="" id="id_account">
+  <option value="1">admin@admin.ru</option>
+
+  <option value="2" selected="">Владимир Путин</option>
+
+</select>
+
+        <a class="related-widget-wrapper-link change-related" id="change_id_account" data-href-template="/admin/account/user/__fk__/change/?_to_field=id&amp;_popup=1" title="Изменить выбранный объект типа " Аккаунт""=""><img src="/static/admin/img/icon-changelink.svg" alt="Изменить"></a><a class="related-widget-wrapper-link add-related" id="add_id_account" href="/admin/account/user/add/?_to_field=id&amp;_popup=1" title="Добавить ещё один объект типа " Аккаунт""=""><img src="/static/admin/img/icon-addlink.svg" alt="Добавить"></a>
+
+</div>
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-name_org">
+
+
+                <div>
+
+
+                        <label class="required" for="id_name_org">Наименнование организации:</label>
+
+                            <input type="text" name="name_org" value="АО Наеб века граждан России" class="vTextField" maxlength="170" required="" id="id_name_org">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-name_director">
+
+
+                <div>
+
+
+                        <label class="required" for="id_name_director">Генеральный директор:</label>
+
+                            <input type="text" name="name_director" value="Песков Дмитрий Сергеевич" class="vTextField" maxlength="170" required="" id="id_name_director">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-ur_address">
+
+
+                <div>
+
+
+                        <label for="id_ur_address">Юридический адрес:</label>
+
+                            <input type="text" name="ur_address" class="vTextField" maxlength="170" id="id_ur_address">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-fk_address">
+
+
+                <div>
+
+
+                        <label for="id_fk_address">Фактический адрес:</label>
+
+                            <input type="text" name="fk_address" class="vTextField" maxlength="170" id="id_fk_address">
+
+
+
+                </div>
+
+        </div>
+
+                <div class="form-row field-inn">
+                    <div>
+                        <label class="required" for="id_inn">ИНН:</label>
+                        <input type="text" name="inn" value="00000002" class="vTextField" maxlength="170" required="" id="id_inn">
+                    </div>
+                    <button type="submit" class="{{ name_org }}">Заполнить по инн</button>
+                </div>
+
+         </div>
+
+        <div class="form-row field-ogrn">
+
+
+                <div>
+
+
+                        <label for="id_ogrn">ОГРН:</label>
+
+                            <input type="text" name="ogrn" class="vTextField" maxlength="170" id="id_ogrn">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-kpp">
+
+
+                <div>
+
+
+                        <label for="id_kpp">КПП:</label>
+
+                            <input type="text" name="kpp" class="vTextField" maxlength="170" id="id_kpp">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-okpo">
+
+
+                <div>
+
+
+                        <label for="id_okpo">ОКПО:</label>
+
+                            <input type="text" name="okpo" class="vTextField" maxlength="170" id="id_okpo">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-okvid">
+
+
+                <div>
+
+
+                        <label for="id_okvid">ОКВЭД:</label>
+
+                            <input type="text" name="okvid" class="vTextField" maxlength="170" id="id_okvid">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-name_bank">
+
+
+                <div>
+
+
+                        <label for="id_name_bank">Название банка:</label>
+
+                            <input type="text" name="name_bank" class="vTextField" maxlength="170" id="id_name_bank">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-bic">
+
+
+                <div>
+
+
+                        <label for="id_bic">БИК:</label>
+
+                            <input type="text" name="bic" class="vTextField" maxlength="100" id="id_bic">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-r_chet">
+
+
+                <div>
+
+
+                        <label for="id_r_chet">Р/счет:</label>
+
+                            <input type="text" name="r_chet" class="vTextField" maxlength="170" id="id_r_chet">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-k_chet">
+
+
+                <div>
+
+
+                        <label for="id_k_chet">Корр.счет:</label>
+
+                            <input type="text" name="k_chet" class="vTextField" maxlength="170" id="id_k_chet">
+
+
+
+                </div>
+
+        </div>
+
+        <div class="form-row field-post_address">
+
+
+                <div>
+
+
+                        <label for="id_post_address">Почтовый адрес:</label>
+
+                            <input type="text" name="post_address" class="vTextField" maxlength="170" id="id_post_address">
+
+
+
+                </div>
+
+        </div>
+
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+
+<input type="submit" value="Сохранить" class="default" name="_save">
+
+
+    <p class="deletelink-box"><a href="/admin/account/datauserorganization/1/delete/" class="deletelink">Удалить</a></p>
+
+
+<input type="submit" value="Сохранить и добавить другой объект" name="_addanother">
+<input type="submit" value="Сохранить и продолжить редактирование" name="_continue">
+
+
+</div>
+
+
+
+    <script id="django-admin-form-add-constants" src="/static/admin/js/change_form.js" async="">
+    </script>
+
+
+
+
+<script id="django-admin-prepopulated-fields-constants" src="/static/admin/js/prepopulate_init.js" data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+{% endblock %}

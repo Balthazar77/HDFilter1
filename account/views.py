@@ -5,9 +5,10 @@ from django.shortcuts import redirect, render
 from django.views import View
 from account.forms import SignUpForm, ProfileForm
 from django.urls import reverse, reverse_lazy
-from account.models import User, Enrollment
-from django.contrib.auth.models import User
-
+from account.models import User, Enrollment, DataUserOrganization
+#from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class SigninView(View):
     form_class = SignUpForm
@@ -51,14 +52,18 @@ class PasswordResetConfirmView(views.PasswordResetConfirmView):
 
 class Profile(View):
     form_class = ProfileForm
-    template_name = 'product.html'
+    template_name = 'profile.html'
 
     def get(self, request, **kwargs):
         user = User.objects.filter(pk=self.request.user.pk).first()
+        organizations = DataUserOrganization.objects.filter(account=self.request.user).first()
         initials = {
             'email': user.email,
             'first_name': user.first_name,
             'last_name': user.last_name,
+            'telephone': user.telephone,
+            'name_org': organizations.name_org,
+            'name_director': organizations.name_director,
         }
         form = self.form_class(initial=initials)
         return self.render_form(form)
@@ -72,6 +77,4 @@ class Profile(View):
         enrollments = Enrollment.objects.filter(user=self.request.user)
         return render(self.request, self.template_name,
                       {'form': form, 'Enrollments': enrollments})
-
-
 
