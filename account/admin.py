@@ -14,7 +14,7 @@ class AccountForm(forms.ModelForm):
 @admin.register(User)
 class AdminUser(admin.ModelAdmin):
     list_display = ('id', 'username', 'email', 'telephone')
-    list_display_links = ('username',)
+    list_display_links = ('username', 'email',)
 
 @admin.register(DataUserOrganization)
 class AdminUrOrganization(admin.ModelAdmin, forms.ModelForm):

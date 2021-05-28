@@ -25,6 +25,11 @@
         <p>Артикул: {{ product.articul }}</p>
         <p>В наличие: {{ product.filter_count }}</p>
         <p>Описание:{{ product.description }}</p>
+       <form method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           {{ form }}
+           <button type="submit" class="btn btn-danger">Добавить в корзину</button>
+       </form>
     </div>
     <p class="mt-4">Характеристики:</p>
 

@@ -299,3 +299,9 @@ class ProfileForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         return cleaned_data
+
+class AddCart(forms.ModelForm):
+    cart=forms.IntegerField()
+
+    class Meta:
+        fields = ('cart',)

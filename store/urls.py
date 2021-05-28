@@ -1,12 +1,13 @@
 
 from django.urls import path
 from django.conf.urls import url
-from store.views import ProductListView, ProductByCategory, ProductDetailView
+from store.views import ProductListView, ProductByCategory, ProductDetailView, CartView
 
 
 urlpatterns = [
     url(r'^$', ProductListView.as_view(), name='product'),
     url(r'^(?P<slug>[\w-]+)/$', ProductByCategory.as_view(), name='category'),
-    url(r'^(?P<slug>[\w-]+)/(?P<articul>[\w-]+)/$', ProductDetailView.as_view(), name='product_detail')
+    url(r'^(?P<slug>[\w-]+)/(?P<articul>[\w-]+)/$', ProductDetailView.as_view(), name='product_detail'),
+    path('cart/', CartView.as_view(), name='cart'),
 
 ]
