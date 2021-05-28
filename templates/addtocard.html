@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="text-center mt-5 mb-5">Товар <a href="{% url 'product' %}{{ product.category.slug }}/{{ product.articul }}/">"{{ product.title }}"</a> добавлен в корзину.
+    Хотите вернуться <a href="javascript:history.back()">назад</a> или <a href="{%  url 'cart' %}">перейти в корзину</a></h3>
+
+
+
+
+{% endblock %}

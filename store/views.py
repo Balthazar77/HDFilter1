@@ -91,15 +91,15 @@ class ProductDetailView(DetailView):
         return queryset.filter(articul=self.articul)
 
     def post(self, request , *args, **kwargs):
-        # if request.method == "POST":
-        #     cart = request.POST.get("cart")
-        #     # age = request.POST.get("age")		# получение значения поля age
-        #     return HttpResponse('ДАну нахуй')
+        if request.method == "POST":
+            cart = request.POST.get("cart")
+            print(args,kwargs)
+            product = self.model.objects.filter(articul=kwargs['articul']).first()
+            # age = request.POST.get("age")		# получение значения поля age
+            return render(request, "addtocard.html", {"product":product})
         # else:
         #     addcart = AddCart()
         #     return render(request, "cart.html", {"form": addcart})
-        print('в пизду')
-        return  #Response({"message": "Hello, world!"})
 
 
 

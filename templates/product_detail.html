@@ -25,6 +25,8 @@
         <p>Артикул: {{ product.articul }}</p>
         <p>В наличие: {{ product.filter_count }}</p>
         <p>Описание:{{ product.description }}</p>
+
+        {{ message }}
        <form method="post" enctype="multipart/form-data">
            {% csrf_token %}
            {{ form }}
